@@ -44,6 +44,9 @@ public class SaveData : MonoBehaviour
 
     IEnumerator SaveDataApi()
     {
+        newUser.interactable = true;
+        exit.interactable = true;
+
         string data;
         if (GameManager0.GetInstane().currentUserState == UserState.guest)
         {
@@ -66,6 +69,7 @@ public class SaveData : MonoBehaviour
         if (InfoRequest.isNetworkError || InfoRequest.isHttpError)
         {
             Debug.LogError(InfoRequest.error);
+            loading.text = "";
             saveData.interactable = true;
             yield break;
 
@@ -79,8 +83,7 @@ public class SaveData : MonoBehaviour
         saveData.interactable = false;
         butText.text = "Data saved";
         loading.enabled = false;
-        newUser.interactable = true;
-        exit.interactable = true;
+        
 
     }
 }

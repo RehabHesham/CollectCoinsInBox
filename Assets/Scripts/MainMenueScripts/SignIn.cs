@@ -99,8 +99,24 @@ public class SignIn : MonoBehaviour
             errorSignIn.text = "Incorrect User name or Password";
         }
     }
+    public void SignInCheck()
+    {
+        if ((email.text == "ahmed" && password.text == "1234") || (email.text == "salma" && password.text == "56789"))
+        {
+            GameManager0.GetInstane().userName = email.text;
+            GameManager0.GetInstane().password = password.text;
+            PlayerPrefs.SetString("UserName", email.text);
+            GameManager0.GetInstane().currentUserState = UserState.registered;
 
-    /*
+            GameManager0.GetInstane().GoToChoseGame();
+        }
+        else
+        {
+            errorSignIn.enabled = true;
+        }
+    }
+
+    
     public void Guest()
     {
         guestNum = PlayerPrefs.GetInt("guestNum");
@@ -113,5 +129,5 @@ public class SignIn : MonoBehaviour
 
         GameManager0.GetInstane().GoToChoseGame();
     }
-    */
+    
 }
